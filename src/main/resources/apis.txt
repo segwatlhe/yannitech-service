@@ -1,0 +1,15 @@
+METHODS			 URL's       											 	  ACTION
+***********************************************************************************************
+GET:  		http://localhost:8080/yannitech/api/books					 	retrieve all books
+POST:  		http://localhost:8080/yannitech/api/books					 	create new Book
+GET: 		http://localhost:8080/yannitech/api/books/{id}/				 	retrieve a Book by : "id"
+PUT: 		http://localhost:8080/yannitech/api/books/{id}/				 	update a Book by : "id"
+DELETE 		http://localhost:8080/yannitech/api/books/{id}/				 	delete a Book record by : "id"
+GET: 		http://localhost:8080/yannitech/api/findbook?title=[keyword] 	find all Books which title contains "keyword"
+
+GET			http://localhost:8080/yannitech/api/book/{id}/authors			retrieve Authors by : "bookId"
+DELETE 		http://localhost:8080/yannitech/api/book/{id}/				 	delete an Author record by : "id"
+PUT:  		http://localhost:8080/yannitech/api/books					 	create new Author
+
+
+H2 database: http://localhost:8080/yannitech/h2/
