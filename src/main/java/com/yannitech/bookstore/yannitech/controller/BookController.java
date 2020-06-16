@@ -59,6 +59,7 @@ public class BookController {
     
 
     // ***** Find Book By ID *****
+    // with ResponseEntity<T> BodyBuilder.body(T body) we can set the HTTP response body
     @GetMapping("/books/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable long id) {
         return ResponseEntity.ok().body(bookRepository.findById(id));

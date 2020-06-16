@@ -40,7 +40,6 @@ public class AuthorController {
     	author.setBook(book);
     	
 		authorCustomRepository.updateAuthor(author);
-
     }
 	
 	
@@ -50,12 +49,12 @@ public class AuthorController {
     	return authorCustomRepository.findAuthorsByBookId(id);
     }
     
+    
     // ***** Remove Author *****
     @DeleteMapping("/book/{id}")
     public void deleteEmployee(@PathVariable(value = "id") Long authorId) throws ResourceNotFoundException {
         Author author = authorCustomRepository.findAuthorById(authorId);
-        authorCustomRepository.removeAuthor(author);
-       
+        authorCustomRepository.removeAuthor(author);   
     }
     
     

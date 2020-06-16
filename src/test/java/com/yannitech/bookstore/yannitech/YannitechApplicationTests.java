@@ -20,7 +20,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.yannitech.bookstore.yannitech.controller.BookController;
 import com.yannitech.bookstore.yannitech.model.Book;
-import com.yannitech.bookstore.yannitech.model.Books;
 import com.yannitech.bookstore.yannitech.repository.BookCustomRepository;
 
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -85,17 +84,5 @@ class YannitechApplicationTests {
 		this.mockMvc.perform(get("/api/hello/")).andDo(print()).andExpect(status().isOk())
 				.andExpect(content().string(containsString("Hello, World")));
 	}	
-	
-	
-//	@Sql({ "classpath:schema.sql", "classpath:data.sql" })
-//	@Test
-//	public void testAllEmployees() 
-//	{
-//		assertTrue(
-//				this.restTemplate
-//					.getForObject("http://localhost:" + port + "/yannitech/api/books", Books.class)
-//					.getEmployeeList().size() == 3);
-//	}
-	
     
 }
