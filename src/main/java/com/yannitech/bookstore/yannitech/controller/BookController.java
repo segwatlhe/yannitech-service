@@ -43,6 +43,7 @@ public class BookController {
 		return "Hello, World";
 	}
 	
+	
 	// ***** List Book *****
     @GetMapping("/books")
     public List<Book> findAllBooks() {
@@ -89,14 +90,14 @@ public class BookController {
         bookRepository.delete(book);
         
         Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
+        response.put("deleted...." + book.getId(), Boolean.TRUE);
         return response;
     }
     
     
     // ***** Search for a book *****
     @GetMapping("/findbook")
-    public ResponseEntity<List<Book>> getAllTutorials(@RequestParam(required = false) String title) {
+    public ResponseEntity<List<Book>> getAllBooks(@RequestParam(required = false) String title) {
       try {
     	  System.out.println(title);
         List<Book> books = new ArrayList<Book>();
