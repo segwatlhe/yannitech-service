@@ -38,10 +38,10 @@ public class BookController {
 	private BookSearchRepository bookSearchRepository;
 	
 	
-	@RequestMapping("/hello")
-	public @ResponseBody String greeting() {
-		return "Hello, World";
-	}
+//	@RequestMapping("/hello")
+//	public @ResponseBody String greeting() {
+//		return "Hello, World";
+//	}
 	
 	
 	// ***** List Book *****
