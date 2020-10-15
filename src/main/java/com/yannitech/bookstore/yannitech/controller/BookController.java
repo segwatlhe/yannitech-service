@@ -37,13 +37,6 @@ public class BookController {
 	@Autowired
 	private BookSearchRepository bookSearchRepository;
 	
-	
-//	@RequestMapping("/hello")
-//	public @ResponseBody String greeting() {
-//		return "Hello, World";
-//	}
-	
-	
 	// ***** List Book *****
     @GetMapping("/books")
     public List<Book> findAllBooks() {
