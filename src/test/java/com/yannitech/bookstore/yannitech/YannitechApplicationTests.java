@@ -20,7 +20,7 @@
 //
 //import com.yannitech.bookstore.yannitech.controller.BookController;
 //import com.yannitech.bookstore.yannitech.model.Book;
-//import com.yannitech.bookstore.yannitech.repository.BookCustomRepository;
+//import com.yannitech.bookstore.yannitech.data.BookCustomRepository;
 //
 //import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 //import org.springframework.boot.test.mock.mockito.MockBean;
