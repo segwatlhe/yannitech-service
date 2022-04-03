@@ -13,9 +13,6 @@ import java.util.List;
 public class AuthorController {
 	
 	private final AuthorService authorService;
-//
-//	@Autowired
-//	private AuthorCustomRepository authorCustomRepository;
 
 	public AuthorController(AuthorService authorService) {
 		this.authorService = authorService;
@@ -24,8 +21,8 @@ public class AuthorController {
 
 	// ***** Add Author *****
 	@PutMapping("/book")
-    public void updateAuthor(@RequestBody Author author) throws ResourceNotFoundException {
-		authorService.updateAuthor(author);
+    public void addAuthor(@RequestBody Author author) {
+		authorService.addAuthor(author);
     }
 	
 	
@@ -37,5 +34,9 @@ public class AuthorController {
     
     
     // ***** Remove Author *****
+	@DeleteMapping("remove")
+	public void removeAuthor(Long id){
+		authorService.removeAuthor(id);
+	}
     
 }

@@ -7,6 +7,6 @@ import java.util.List;
 public interface AuthorService {
     List<Author> findAllByBook_Id(Long bookId);
     Author findById(Long id);
-    void removeAuthor(Author author);
-    void updateAuthor(Author author);
+    void removeAuthor(Long id);
+    void addAuthor(Author author);
 }

@@ -16,6 +16,8 @@ public interface AuthorRepository extends JpaRepository<Author, String> {
     List<Author> findAllByBook_Id(Long id);
 
     @Modifying
-    @Query("update Author a set a.author =?1 where a.id=?2")
+    @Query("update Author a set a.authorName =?1 where a.id=?2")
     void updateAuthor(String author, Long id);
+
+    Author findByBook_Id(Long id);
 }

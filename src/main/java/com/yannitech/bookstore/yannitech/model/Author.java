@@ -25,7 +25,8 @@ public class Author implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "author_id")
     private long id;
-    private String author;
+	@Column(name = "author")
+    private String authorName;
  
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "book_id", nullable = false)
@@ -35,10 +36,10 @@ public class Author implements Serializable {
 	public Author() {
 	}
 
-	public Author(long id, String author, Book book) {
+	public Author(long id, String authorName, Book book) {
 		super();
 		this.id = id;
-		this.author = author;
+		this.authorName = authorName;
 		this.book = book;
 	}
 
@@ -50,12 +51,12 @@ public class Author implements Serializable {
 		this.id = id;
 	}
 
-	public String getAuthor() {
-		return author;
+	public String getAuthorName() {
+		return authorName;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	public Book getBook() {
@@ -68,7 +69,7 @@ public class Author implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", author=" + author + ", book="
+		return "Author [id=" + id + ", authorName=" + authorName + ", book="
 				+ book + "]";
 	}
 

@@ -1,7 +1,9 @@
 package com.yannitech.bookstore.yannitech.service;
 
 import com.yannitech.bookstore.yannitech.model.Author;
+import com.yannitech.bookstore.yannitech.model.Book;
 import com.yannitech.bookstore.yannitech.repository.AuthorRepository;
+import com.yannitech.bookstore.yannitech.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,9 +13,11 @@ import java.util.List;
 public class AuthorServiceBean implements AuthorService{
 
     private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
 
-    public AuthorServiceBean(AuthorRepository authorRepository) {
+    public AuthorServiceBean(AuthorRepository authorRepository, BookRepository bookRepository) {
         this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
     }
 
     @Override
@@ -27,13 +31,15 @@ public class AuthorServiceBean implements AuthorService{
     }
 
     @Override
-    public void removeAuthor(Author author) {
-        authorRepository.delete(author);
+    public void removeAuthor(Long id) {
+      //  authorRepository.delete(author);
     }
 
     @Override
     @Transactional
-    public void updateAuthor(Author author) {
-        authorRepository.updateAuthor(author.getAuthor(), author.getId());
+    public void addAuthor(Author author) {
+        Book book = bookRepository.findById(author.getId());
+        author.setBook(book);
+        authorRepository.save(author);
     }
 }
