@@ -1,6 +1,5 @@
 package com.yannitech.bookstore.yannitech.controller;
 
-import com.yannitech.bookstore.yannitech.exception.ResourceNotFoundException;
 import com.yannitech.bookstore.yannitech.model.Author;
 import com.yannitech.bookstore.yannitech.service.AuthorService;
 import org.springframework.web.bind.annotation.*;
@@ -19,22 +18,19 @@ public class AuthorController {
 	}
 
 
-	// ***** Add Author *****
-	@PutMapping("/book")
-    public void addAuthor(@RequestBody Author author) {
-		authorService.addAuthor(author);
+	@PutMapping("/author/add")
+    public void addAuthor(@RequestBody Long bookId) {
+		authorService.addAuthor(bookId);
     }
 	
 	
-	// ***** List Authors By BookID*****
-    @GetMapping("/book/{id}/authors")
+    @GetMapping("/author/list/{id}")
     public List <Author> getAuthorByBookId(@PathVariable(value = "id") Long id) {
     	return authorService.findAllByBook_Id(id);
     }
     
-    
     // ***** Remove Author *****
-	@DeleteMapping("remove")
+	@DeleteMapping("/author/remove")
 	public void removeAuthor(Long id){
 		authorService.removeAuthor(id);
 	}

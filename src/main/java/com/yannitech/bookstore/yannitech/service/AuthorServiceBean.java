@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class AuthorServiceBean implements AuthorService{
+public class AuthorServiceBean implements AuthorService {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
@@ -22,24 +22,24 @@ public class AuthorServiceBean implements AuthorService{
 
     @Override
     public List<Author> findAllByBook_Id(Long bookId) {
-        return authorRepository.findAllByBook_Id(bookId);
-    }
 
-    @Override
-    public Author findById(Long id) {
-        return authorRepository.findById(id);
+        List<Author> authors = authorRepository.findAllByBook_Id(bookId);
+
+        return authors;
     }
 
     @Override
     public void removeAuthor(Long id) {
-      //  authorRepository.delete(author);
+        //  authorRepository.delete(author);
     }
 
     @Override
     @Transactional
-    public void addAuthor(Author author) {
-        Book book = bookRepository.findById(author.getId());
-        author.setBook(book);
-        authorRepository.save(author);
+    public void addAuthor(Long bookId) {
+       // System.out.println("author " + author.getAuthorName());
+        Book book = bookRepository.findById(bookId);
+        System.out.println("update book " + book.getId());
+       // author.setBook(book);
+        authorRepository.save(null);
     }
 }

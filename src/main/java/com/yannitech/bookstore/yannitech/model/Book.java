@@ -30,7 +30,7 @@ public class Book implements Serializable {
     private String year;
     private Double price;
  
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     //@Transient
     private List<Author> authors=new ArrayList<Author>();
