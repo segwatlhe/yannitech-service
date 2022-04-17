@@ -21,9 +21,7 @@ public class AuthorServiceBean implements AuthorService {
 
     @Override
     public List<Author> findAllByBook_Id(Long bookId) {
-
         List<Author> authors = authorRepository.findAllByBook_Id(bookId);
-
         return authors;
     }
 
