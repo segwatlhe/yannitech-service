@@ -25,7 +25,6 @@ public class Author implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "author_id")
     private long id;
-	// @Column(name = "authorName")
     private String authorName;
  
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)

@@ -12,8 +12,6 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, String> {
 
-    List<Book> findAllById(Long id);
-
     Book findById(Long id);
 
     @Modifying

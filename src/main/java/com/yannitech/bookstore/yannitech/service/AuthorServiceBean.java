@@ -6,7 +6,6 @@ import com.yannitech.bookstore.yannitech.repository.AuthorRepository;
 import com.yannitech.bookstore.yannitech.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -29,17 +28,18 @@ public class AuthorServiceBean implements AuthorService {
     }
 
     @Override
-    public void removeAuthor(Long id) {
-        //  authorRepository.delete(author);
+    public void remove(Long id) {
+        Author author = authorRepository.findById(id);
+        author.setBook(null);
+        authorRepository.delete(author);
     }
 
     @Override
-    @Transactional
-    public void addAuthor(Long bookId) {
-       // System.out.println("author " + author.getAuthorName());
+    public void save(Long bookId, Author author) {
         Book book = bookRepository.findById(bookId);
-        System.out.println("update book " + book.getId());
-       // author.setBook(book);
-        authorRepository.save(null);
+        Author newAuthor = new Author();
+        newAuthor.setAuthorName(author.getAuthorName());
+        newAuthor.setBook(book);
+        authorRepository.save(newAuthor);
     }
 }
