@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController 
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class BookController {
 
 	private final BookService bookService;
@@ -20,29 +20,29 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/books")
+    @GetMapping("book/list")
     public List<Book> findAll() {
         return bookService.findAll();
     }
     
-    @PostMapping("/books")
+    @PostMapping("book/save")
     public Book saveBook(@RequestBody Book book) {
         return bookService.saveBook(book);
     }
     
-    @GetMapping("/books/{id}")
+    @GetMapping("book/{id}")
     public ResponseEntity<Book> findById(@PathVariable long id) {
         return ResponseEntity.ok().body(bookService.findById(id));
     }
     
-    @PutMapping("/books/{id}")
-    public void updateBook(@PathVariable(value = "id") Long id, @Validated @RequestBody Book book) throws ResourceNotFoundException {
-    	bookService.updateBook(book, id);
+    @PutMapping("book/edit/{id}")
+    public void editBook(@PathVariable(value = "id") Long id, @Validated @RequestBody Book book) throws ResourceNotFoundException {
+    	bookService.editBook(book, id);
     }
 
-    @DeleteMapping("/books/{id}")
-    public void delete(@PathVariable(value = "id") Long bookId) {
-    	bookService.deleteById(bookId);
+    @DeleteMapping("book/delete/{id}")
+    public void delete(@PathVariable(value = "id") Long id) {
+    	bookService.deleteById(id);
     }
     
     // ***** Search for a book *****

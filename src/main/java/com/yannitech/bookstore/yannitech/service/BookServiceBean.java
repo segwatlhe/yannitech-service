@@ -37,22 +37,18 @@ public class BookServiceBean implements BookService {
 
     @Override
     @Transactional
-    public void updateBook(Book book, Long id) {
-        bookRepository.updateBook(book.getCategory(), book.getPrice(), book.getTitle(), book.getYear(), id);
-    }
-
-    @Override
-    public void delete(Book book) {
-        Author author = authorRepository.findByBook_Id(book.getId());
-        authorRepository.delete(author);
-        bookRepository.delete(book);
+    public void editBook(Book book, Long id) {
+        bookRepository.editBook(book.getCategory(), book.getPrice(), book.getTitle(), book.getYear(), id);
     }
 
     @Override
     public void deleteById(Long bookId) {
-        Author author = authorRepository.findByBook_Id(bookId);
-        authorRepository.delete(author);
-        bookRepository.delete(author.getBook());
-     //   return null;
+
+        List<Author> authorList = authorRepository.findAllByBook_Id(bookId);
+
+        authorList.forEach(author -> {
+            authorRepository.delete(author);
+            bookRepository.delete(author.getBook());
+        });
     }
 }

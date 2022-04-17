@@ -18,5 +18,5 @@ public interface BookRepository extends JpaRepository<Book, String> {
 
     @Modifying
     @Query("update Book b set b.category =?1, b.price = ?2, b.title = ?3, b.year = ?4 where b.id=?5")
-    void updateBook(String category, Double price, String title, String year, Long id);
+    void editBook(String category, Double price, String title, String year, Long id);
 }
