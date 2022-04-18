@@ -48,7 +48,7 @@ public class BookController {
     }
     
     @GetMapping("book/search")
-    public Page<Book> findAllByTitleContainingIgnoreCase(Pageable pageable, @RequestParam String title){
+    public Page<Book> findAllByTitleContainingIgnoreCase(Pageable pageable, @RequestParam("title") String title){
         return bookService.findAllByTitleContainingIgnoreCase(pageable, title);
     }
 
