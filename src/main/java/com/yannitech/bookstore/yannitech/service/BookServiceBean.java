@@ -44,7 +44,7 @@ public class BookServiceBean implements BookService {
     }
 
     @Override
-    public void deleteById(Long bookId) {
+    public void deleteBook(Long bookId) {
 
         Book book = bookRepository.findById(bookId);
         List<Author> authorList = authorRepository.findAllByBook_Id(book.getId());

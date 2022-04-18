@@ -44,12 +44,12 @@ public class BookController {
 
     @DeleteMapping("book/delete/{id}")
     public void delete(@PathVariable(value = "id") Long id) {
-    	bookService.deleteById(id);
+    	bookService.deleteBook(id);
     }
     
     @GetMapping("book/search")
     public Page<Book> findAllByTitleContainingIgnoreCase(Pageable pageable, @RequestParam String title){
         return bookService.findAllByTitleContainingIgnoreCase(pageable, title);
     }
-    
+
 }

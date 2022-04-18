@@ -11,6 +11,6 @@ public interface BookService {
     List<Book> findAll();
     Book saveBook(Book book);
     void editBook(Book book, Long id);
-    void deleteById(Long bookId);
+    void deleteBook(Long bookId);
     Page<Book> findAllByTitleContainingIgnoreCase(Pageable pageable, String title);
 }
