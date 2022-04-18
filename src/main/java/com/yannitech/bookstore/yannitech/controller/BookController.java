@@ -3,6 +3,8 @@ package com.yannitech.bookstore.yannitech.controller;
 import com.yannitech.bookstore.yannitech.exception.ResourceNotFoundException;
 import com.yannitech.bookstore.yannitech.model.Book;
 import com.yannitech.bookstore.yannitech.service.BookService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +47,9 @@ public class BookController {
     	bookService.deleteById(id);
     }
     
-    // ***** Search for a book *****
-   // public Book findByBookTitle()
+    @GetMapping("book/search")
+    public Page<Book> findAllByTitleContainingIgnoreCase(Pageable pageable, @RequestParam String title){
+        return bookService.findAllByTitleContainingIgnoreCase(pageable, title);
+    }
+    
 }

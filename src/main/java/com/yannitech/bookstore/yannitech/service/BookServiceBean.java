@@ -4,6 +4,8 @@ import com.yannitech.bookstore.yannitech.model.Author;
 import com.yannitech.bookstore.yannitech.model.Book;
 import com.yannitech.bookstore.yannitech.repository.AuthorRepository;
 import com.yannitech.bookstore.yannitech.repository.BookRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -52,5 +54,10 @@ public class BookServiceBean implements BookService {
         });
 
         bookRepository.delete(book);
+    }
+
+    @Override
+    public Page<Book> findAllByTitleContainingIgnoreCase(Pageable pageable, String title){
+        return bookRepository.findAllByTitleContainingIgnoreCase(pageable, title);
     }
 }
