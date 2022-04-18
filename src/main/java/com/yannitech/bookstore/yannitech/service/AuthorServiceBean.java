@@ -33,10 +33,10 @@ public class AuthorServiceBean implements AuthorService {
     }
 
     @Override
-    public void save(Long bookId, Author author) {
+    public void save(Long bookId, String author) {
         Book book = bookRepository.findById(bookId);
         Author newAuthor = new Author();
-        newAuthor.setAuthorName(author.getAuthorName());
+        newAuthor.setAuthorName(author);
         newAuthor.setBook(book);
         authorRepository.save(newAuthor);
     }

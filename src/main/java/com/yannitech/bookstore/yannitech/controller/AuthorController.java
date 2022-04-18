@@ -17,12 +17,10 @@ public class AuthorController {
 		this.authorService = authorService;
 	}
 
-
 	@PutMapping("author/add/{id}")
-    public void save(@PathVariable Long id, @RequestBody Author author) {
+    public void save(@PathVariable Long id, @RequestBody String author) {
 		authorService.save(id, author);
     }
-	
 	
     @GetMapping("author/list/{id}")
     public List <Author> getAuthorByBookId(@PathVariable(value = "id") Long id) {
