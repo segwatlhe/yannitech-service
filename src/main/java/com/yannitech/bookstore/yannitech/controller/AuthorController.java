@@ -20,7 +20,6 @@ public class AuthorController {
 
 	@PutMapping("author/add/{id}")
     public void save(@PathVariable Long id, @RequestBody Author author) {
-		System.out.println("addAuthor " + author.getAuthorName());
 		authorService.save(id, author);
     }
 	
@@ -30,7 +29,6 @@ public class AuthorController {
     	return authorService.findAllByBook_Id(id);
     }
     
-    // ***** Remove Author *****
 	@DeleteMapping("author/remove/{id}")
 	public void remove(@PathVariable Long id){
 		authorService.remove(id);
