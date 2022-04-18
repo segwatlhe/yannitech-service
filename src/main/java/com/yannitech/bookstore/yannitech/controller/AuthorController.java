@@ -18,7 +18,7 @@ public class AuthorController {
 	}
 
 	@PutMapping("author/add/{id}")
-    public void save(@PathVariable Long id, @RequestBody String author) {
+    public void save(@PathVariable Long id, @RequestBody Author author) {
 		authorService.save(id, author);
     }
 	
