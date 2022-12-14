@@ -1,18 +1,18 @@
 package com.yannitech.bookstore.yannitech.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "book")
 public class Book implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "book_id")
@@ -25,76 +25,76 @@ public class Book implements Serializable {
 
     private String year;
     private Double price;
- 
+
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     @Transient
-    private List<Author> authors=new ArrayList<Author>();
-    
+    private List<Author> authors = new ArrayList<Author>();
+
     protected Book() {
     }
-    
-	public Book(long id, String category, String title, String year, Double price, List<Author> authors) {
-		super();
-		this.id = id;
-		this.category = category;
-		this.title = title;
-		this.year = year;
-		this.price = price;
-		this.authors = authors;
-	}
 
-	public long getId() {
-		return id;
-	}
+    public Book(long id, String category, String title, String year, Double price, List<Author> authors) {
+        super();
+        this.id = id;
+        this.category = category;
+        this.title = title;
+        this.year = year;
+        this.price = price;
+        this.authors = authors;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public String getCategory() {
+        return category;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getYear() {
-		return year;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setYear(String year) {
-		this.year = year;
-	}
+    public String getYear() {
+        return year;
+    }
 
-	public Double getPrice() {
-		return price;
-	}
+    public void setYear(String year) {
+        this.year = year;
+    }
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+    public Double getPrice() {
+        return price;
+    }
 
-	public List<Author> getAuthors() {
-		return authors;
-	}
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
-	public void setAuthorList(List<Author> authors) {
-		this.authors = authors;
-	}
+    public List<Author> getAuthors() {
+        return authors;
+    }
 
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", category=" + category + ", title=" + title + ", year=" + year + ", price=" + price
-				+ ", authors=" + authors + "]";
-	}
+    public void setAuthorList(List<Author> authors) {
+        this.authors = authors;
+    }
+
+    @Override
+    public String toString() {
+        return "Book [id=" + id + ", category=" + category + ", title=" + title + ", year=" + year + ", price=" + price
+                + ", authors=" + authors + "]";
+    }
 }

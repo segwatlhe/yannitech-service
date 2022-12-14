@@ -49,9 +49,7 @@ public class BookServiceBean implements BookService {
         Book book = bookRepository.findById(bookId);
         List<Author> authorList = authorRepository.findAllByBook_Id(book.getId());
 
-        authorList.forEach(author -> {
-            authorRepository.delete(author);
-        });
+        authorList.forEach(author -> authorRepository.delete(author));
 
         bookRepository.delete(book);
     }

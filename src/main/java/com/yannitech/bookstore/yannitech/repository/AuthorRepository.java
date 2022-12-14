@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, String> {
+
     Author findById(Long id);
+
     List<Author> findAllByBook_Id(Long id);
 }
